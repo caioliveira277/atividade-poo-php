@@ -21,6 +21,25 @@ if(!$peso) {
     $retorno['codigo'] = 400;
     $retorno['mensagem'] = 'O campo peso está inválido!';
 }
+if(strlen($nome) <= 2) {
+    $retorno['codigo'] = 400;
+    $retorno['mensagem'] = 'O campo nome está muito pequeno';
+}
+
+if(!$cor) {
+    $retorno['codigo'] = 400;
+    $retorno['mensagem'] = 'O campo cor está inválido!';
+}
+
+if(!$bico) {
+    $retorno['codigo'] = 400;
+    $retorno['mensagem'] = 'O campo cor está inválido!';
+}
+
+if(!$filhote) {
+    $retorno['codigo'] = 400;
+    $retorno['mensagem'] = 'O campo cor está inválido!';
+}
 
 /* caso de sucesso */
 if($retorno['codigo'] === 200) {
