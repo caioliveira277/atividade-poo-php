@@ -3,8 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
+.alerta {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
+    top: 30px;
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+.alerta:empty {
+    display: none;
+}
 
 body {
+    position:relative;
     background: rgb(44,44,44);
     background: radial-gradient(circle, rgba(44,44,44,1) 0%, rgba(0,255,231,1) 0%, rgba(0,138,255,1) 100%);
     width: 100%;
@@ -26,6 +44,36 @@ form input {
     border: none;
     outline: none;
     border-radius: 10px;
+}
+input::placeholder {
+    color: #ebebeb;
+}
+label {
+    margin-bottom: 10px;
+}
+.acoes div {
+    display: flex;
+    justify-content: center;
+}
+#dados h2 {
+    margin-bottom: 15px;
+}
+#dados.passaro .cachorro {
+    display: none;
+}
+#dados.cachorro .passaro {
+    display: none;
+}
+.acoes.passaro .cachorro {
+    display: none;
+}
+.acoes.cachorro .passaro {
+    display: none;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 div {
@@ -70,3 +118,4 @@ h2 {
     font-size: 24px;
     font-family: sans-serif;
 }
+

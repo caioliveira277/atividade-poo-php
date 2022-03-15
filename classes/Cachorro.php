@@ -2,18 +2,18 @@
 require_once('Animal.php');
 
 // classe derivada extendendo uma super classe, aplicando o conteceito de herança e abstração
-class Passaro extends Animal {
+class Cachorro extends Animal {
     // definindo métodos e atributos específicos do passaro
     protected string $nome;
-    protected string $corDoBico;
-    
-    public function voar(): string {
-        return 'Ele voou';
+    protected string $corDoRosto;
+
+    public function rosnar(): string {
+        return 'Grrrrr!';
     }
 
     // implementando métodos da super classe seguindo a ideia de abstração
     public function comer(): string {
-        return 'Ele comeu todo o alpiste';
+        return 'Ele comeu toda a ração';
     }
     public function dormir(): string {
         return 'Ele dormiu';
