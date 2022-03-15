@@ -7,6 +7,7 @@ class Passaro extends Animal {
     protected string $nome;
     protected string $corDoBico;
     
+    // definindo método específico do passaro
     public function voar(): string {
         return 'Ele voou';
     }

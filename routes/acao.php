@@ -1,5 +1,6 @@
 <?php
 include_once('../classes/Papagaio.php');
+include_once('../classes/PastorAlemao.php');
 
 session_start();
 
@@ -13,7 +14,8 @@ $retorno = [
   'codigo' => 200
 ];
 
-$animal = $_SESSION['animal']['instancia'];
+// recebendo instancia da classe para utilização dos métodos
+$animal = unserialize($_SESSION['animal']['instancia']);
 $retorno['acao_solicitada'] = call_user_func(array($animal, $acao));
 
 /* tratamentos */

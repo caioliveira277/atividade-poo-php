@@ -3,6 +3,8 @@ const formDados = document.querySelector('form#dados');
 const alerta = document.querySelector('.alerta');
 const acoes = document.querySelector('.acoes');
 const acoesBotoes = acoes.querySelectorAll('button');
+const acoesDados = acoes.querySelector('.dados');
+const animal = acoes.querySelector('.animal');
 
 /* manipulando form tipo do animal */
 formTipoAnimal.addEventListener('submit', (event) => {
@@ -52,8 +54,10 @@ formDados.addEventListener('submit', (event) => {
                         element.setAttribute('fill', json.animal.corSecundaria);
                     });
 
-                    console.log(json.animal)
-
+                    acoesDados.querySelectorAll('p').forEach(element => {
+                        const tipo = element.getAttribute('tipo');
+                        element.innerHTML += `<span>${json.animal[tipo]}</span>`;
+                    });
                 } else {
                     alerta.textContent = json.mensagem;
                 }
@@ -75,7 +79,27 @@ acoesBotoes.forEach((button) => {
         }).then((resp) => {
             resp.json().then(json => {
                 if(json.codigo == 200) {
-                    alert(json.acao_solicitada);
+                    acoesDados.querySelector('.saida').textContent = `${button.textContent}: ${json.acao_solicitada}`;
+                    switch (acao) {
+                        case 'voar':
+                            animal.classList.add('animate__backOutUp')
+                            break;                    
+                        case 'dormir':
+                            animal.classList.add('animate__rotateOutDownRight')
+                            break;                    
+                        case 'comer':
+                            animal.classList.add('animate__headShake')
+                            break;                    
+                        case 'latir':
+                        case 'falar':
+                            animal.classList.add('animate__bounce')
+                            break;                    
+                        case 'rosnar':
+                            animal.classList.add('animate__tada')
+                            break;                    
+                        default:
+                            break;
+                    }
                 } else {
                     alerta.textContent = json.mensagem;
                 }
@@ -83,3 +107,7 @@ acoesBotoes.forEach((button) => {
         })
     })
 })
+
+animal.addEventListener('animationend', () => {
+    animal.classList.remove('animate__backOutUp', 'animate__rotateOutDownRight', 'animate__headShake', 'animate__bounce', 'animate__tada')
+});

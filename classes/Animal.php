@@ -18,7 +18,7 @@ abstract class Animal {
         return $this->{$nome};
     }
 
-    // metodo set para definir valores dos atributos
+    // metodo set para definir valores dos atributos não visíveis
     public function __set($nome, $valor) {
         $this->{$name} = $valor;
     }

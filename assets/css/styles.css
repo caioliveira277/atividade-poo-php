@@ -31,6 +31,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow: hidden;
 }
 
 form input {
@@ -66,6 +67,28 @@ label {
 }
 .acoes.passaro .cachorro {
     display: none;
+}
+.acoes .dados {
+    background: #00000073;
+    border-radius: 5px;
+    padding: 20px 15px;
+    color: #fff;
+    display: flex;
+    flex-flow: column;
+    width: fit-content;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+}
+.dados p {
+    margin-bottom: 10px;
+}
+.dados p span {
+    color: #b1ff74;
+    margin-left: 5px;
+}
+hr {
+    margin-bottom: 5px;
 }
 .acoes.cachorro .passaro {
     display: none;
@@ -118,4 +141,3 @@ h2 {
     font-size: 24px;
     font-family: sans-serif;
 }
-

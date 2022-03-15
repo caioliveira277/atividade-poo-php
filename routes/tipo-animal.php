@@ -16,6 +16,7 @@ if($tipo != 'passaro' && $tipo != 'cachorro') {
   $retorno['mensagem'] = 'O animal informado está incorreto!';
 }
 
+/* salvando dados na sessão */
 $_SESSION['tipo'] = $tipo;
 
 /* retorno JSON API */

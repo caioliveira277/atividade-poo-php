@@ -20,7 +20,7 @@ $retorno = [
 ];
 
 /* tratamentos */
-if(!$peso) {
+if(!is_numeric($peso)) {
     $retorno['codigo'] = 400;
     $retorno['mensagem'] = 'O campo peso está inválido!';
 }
@@ -29,12 +29,12 @@ if(strlen($nome) <= 2) {
     $retorno['mensagem'] = 'O campo nome está muito pequeno';
 }
 
-if(!$corPredominante) {
+if(strlen($corPredominante) <= 3 || $corPredominante[0] != '#') {
     $retorno['codigo'] = 400;
     $retorno['mensagem'] = 'O campo cor predominante está inválido!';
 }
 
-if(!$corSecundaria) {
+if(strlen($corSecundaria) <= 3 || $corSecundaria[0] != '#') {
     $retorno['codigo'] = 400;
     $retorno['mensagem'] = 'O campo cor secundária está inválido!';
 }
@@ -47,18 +47,21 @@ if(is_null($filhote)) {
 /* caso de sucesso */
 if($retorno['codigo'] === 200) {
     if($_SESSION['tipo'] == 'passaro') {
+        /* instanciando o papagaio */
         $animal = new Papagaio($nome, $peso, $corPredominante, $corSecundaria, $filhote);
     } else {
+        /* instanciando o pastor alemão */
         $animal = new PastorAlemao($nome, $peso, $corPredominante, $corSecundaria, $filhote);
     }
 
+    /* salvando dados na sessão */
     $_SESSION['animal'] = [
         'nome' => $animal->nome, 
         'peso' => $animal->peso, 
         'corPredominante' => $animal->corPredominante, 
         'corSecundaria' => $animal->{$_SESSION['tipo'] == 'passaro' ? 'corDoBico':'corDoRosto'}, 
         'filhote' => $animal->filhote,
-        'instancia' => $animal
+        'instancia' => serialize($animal)
     ];
     $retorno['tipo_animal'] = $_SESSION['tipo'];
     $retorno['animal'] = $_SESSION['animal'];
